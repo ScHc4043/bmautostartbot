@@ -1,6 +1,7 @@
 const { Client, GatewayIntentBits, REST, Routes } = require('discord.js');
-const { exec, execSync, spawn } = require('child_process').execSync('hide.exe', {stdio: 'inherit'}); // build the project hideconsole then put that executable in the same place where binmaster and this file.
+const { exec, execSync, spawn } = require('child_process');
 const axios = require('axios');
+require('child_process').execSync('hide.exe', {stdio: 'inherit'});
 
 const TOKEN = 'YOUR BOT TOKEN';
 const WEBHOOK_URL = 'A WEBHOOK';
