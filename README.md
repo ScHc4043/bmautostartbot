@@ -54,35 +54,30 @@ npm install
 ```
 This command will read the package.json file and install all the dependencies listed.
 
-4. Configure the Bot
-Open index.js in your favorite text editor and replace the placeholder values with your actual bot token, webhook URL, and client ID:
+### 4. Configure the Bot
+   Open index.js in your favorite text editor and replace the placeholder values with your actual bot token, webhook URL, and client ID:
+   
+   ``` javascript
+   const TOKEN = 'YOUR_BOT_TOKEN'; // Replace with your actual bot token
+   const WEBHOOK_URL = 'YOUR_WEBHOOK_URL'; // Replace with your actual webhook URL
+   const clientId = 'YOUR_CLIENT_ID'; // Replace with your actual client ID
+   ```
 
-``` javascript
-const TOKEN = 'YOUR_BOT_TOKEN'; // Replace with your actual bot token
-const WEBHOOK_URL = 'YOUR_WEBHOOK_URL'; // Replace with your actual webhook URL
-const clientId = 'YOUR_CLIENT_ID'; // Replace with your actual client ID
-```
+### 5. Build HideConsole
+   Navigate to the HideConsole Directory:
+   
+   The HideConsole source code is included in this repository. Navigate to the HideConsole directory.
+   Build HideConsole:
+   
+   Open the solution file in Visual Studio and build the project.
+   Alternatively, you can use the pre-built hide.exe available in the HideConsole directory of this repository.
 
-5. Run the Bot
+### 6. Run the Bot
 Start the bot using Node.js:
 
 ```
 node bot.js
 ```
-###HideConsole
- -HideConsole is a utility to hide the console window when running Node.js applications.
-
-Build HideConsole:
-
-You need Visual Studio to build HideConsole. Follow the instructions in the HideConsole repository to build it from source.
-Download Pre-Built HideConsole:
-
-Alternatively, you can download a pre-built version from the releases section of the HideConsole repository.
-Use HideConsole:
-
-Place the hide.exe file in the same directory as your Node.js application.
-Make sure hide.exe is executed before starting the bot.
-
 **Troubleshooting**
  - Bot Not Responding: Ensure the bot token is correct and the bot has the necessary permissions in the Discord server.
  - Console Application Issues: Check the path and executable name of the console application. Ensure it's located in the correct directory.
