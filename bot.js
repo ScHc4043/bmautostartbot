@@ -127,6 +127,7 @@ client.on('interactionCreate', async interaction => {
         await interaction.reply('Stopping the console app...');
     } else if (commandName === 'exit') {
         await interaction.reply('Exiting the application...');
+        stopConsoleApp();
         process.exit(0);
     }
 });
