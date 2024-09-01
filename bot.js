@@ -9,9 +9,11 @@ const clientId = 'YOUR BOTS CLIENT ID';
 
 let consoleProcess;
 
+
 const client = new Client({
     intents: [GatewayIntentBits.Guilds]
 });
+
 
 async function sendWebhookMessage(message) {
     try {
@@ -23,6 +25,12 @@ async function sendWebhookMessage(message) {
     }
 }
 
+// Function to clean the console output
+function cleanConsoleOutput(data) {
+
+    return data.replace(/\x1b\[.*?m/g, '');
+}
+
 
 function startConsoleApp() {
     if (consoleProcess) {
@@ -31,17 +39,19 @@ function startConsoleApp() {
     }
 
     consoleProcess = exec('binmaster-auction-win.exe', {
-        windowsHide: true  
+        windowsHide: true  // Hide the console window
     });
 
     consoleProcess.stdout.on('data', (data) => {
-        console.log(`stdout: ${data}`);
-        sendWebhookMessage(data);
+        const cleanedData = cleanConsoleOutput(data.toString());
+        console.log(`stdout: ${cleanedData}`);
+        sendWebhookMessage(cleanedData);
     });
 
     consoleProcess.stderr.on('data', (data) => {
-        console.error(`stderr: ${data}`);
-        sendWebhookMessage(`Error: ${data}`);
+        const cleanedData = cleanConsoleOutput(data.toString());
+        console.error(`stderr: ${cleanedData}`);
+        sendWebhookMessage(`Error: ${cleanedData}`);
     });
 
     consoleProcess.on('close', (code) => {
@@ -67,14 +77,6 @@ function stopConsoleApp() {
     } else {
         console.log('Console app is not running.');
     }
-}
-
-
-function exitNodeApp() {
-    console.log('Exiting Node.js application...');
-    sendWebhookMessage('Exiting Node.js application...');
-    client.destroy();
-    process.exit(0);
 }
 
 
@@ -124,8 +126,8 @@ client.on('interactionCreate', async interaction => {
         stopConsoleApp();
         await interaction.reply('Stopping the console app...');
     } else if (commandName === 'exit') {
-        await interaction.reply('Exiting Node.js application...');
-        exitNodeApp();
+        await interaction.reply('Exiting the application...');
+        process.exit(0);
     }
 });
 
