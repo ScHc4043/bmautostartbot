@@ -46,8 +46,12 @@ This repository contains a Node.js application that manages a console applicatio
    - Paste the webhook URL into the `index.js` file where indicated.
 
 ### 3. Download the repository
-
+- after you down load extract run this
+  
+```
 npm install
+```
+
 This command will read the package.json file and install all the dependencies listed.
 
 5. Configure the Bot
