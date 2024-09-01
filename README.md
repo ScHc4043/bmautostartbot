@@ -1,18 +1,19 @@
-# Discord Bot for Console Application Management
-
-This repository contains a Node.js application that manages a console application via a Discord bot. The bot can start, stop, and exit the console application using slash commands in Discord.
+# Discord Bot for Binmaster
 
 ## Features
 
 - **Start Console App**: Launches the specified console application (`binmaster-auction-win.exe`).
 - **Stop Console App**: Terminates the running console application.
 - **Exit Node.js Application**: Gracefully exits the Node.js application and logs out the bot.
+- **Logging**: Gets the output from Binmaster and sends it to the webhook.
+- **HideConsole**: A utility to hide the console window for Node.js applications.
 
 ## Prerequisites
 
 - **Node.js**: Ensure you have Node.js installed. You can download it from [nodejs.org](https://nodejs.org/).
 - **Discord Bot Token**: You need a bot token from Discord to use this bot.
 - **Discord Webhook URL**: You need a webhook URL to send messages.
+- **Visual Studio**: Required to build `HideConsole`. Alternatively, you can download a pre-built version from the releases section.
 
 ## Getting Started
 
@@ -45,34 +46,47 @@ This repository contains a Node.js application that manages a console applicatio
 2. **Use the Webhook URL**:
    - Paste the webhook URL into the `index.js` file where indicated.
 
-### 3. Download the repository
-- after you down load extract run this
-  
+### 3. Download the Repository
+
+Clone or download the repository and navigate to the directory. Then run:
 ```
 npm install
 ```
-
 This command will read the package.json file and install all the dependencies listed.
 
-5. Configure the Bot
-Open index.js in your favorite text editor.
+4. Configure the Bot
+Open index.js in your favorite text editor and replace the placeholder values with your actual bot token, webhook URL, and client ID:
 
-Replace the placeholder values with your actual bot token and webhook URL.
-
-```javascript
+``` javascript
 const TOKEN = 'YOUR_BOT_TOKEN'; // Replace with your actual bot token
 const WEBHOOK_URL = 'YOUR_WEBHOOK_URL'; // Replace with your actual webhook URL
 const clientId = 'YOUR_CLIENT_ID'; // Replace with your actual client ID
 ```
-6. Run the Bot
+
+5. Run the Bot
 Start the bot using Node.js:
+
 ```
 node bot.js
 ```
+###HideConsole
+ -HideConsole is a utility to hide the console window when running Node.js applications.
 
+Build HideConsole:
 
+You need Visual Studio to build HideConsole. Follow the instructions in the HideConsole repository to build it from source.
+Download Pre-Built HideConsole:
 
-### Troubleshooting
+Alternatively, you can download a pre-built version from the releases section of the HideConsole repository.
+Use HideConsole:
+
+Place the hide.exe file in the same directory as your Node.js application.
+Make sure hide.exe is executed before starting the bot.
+
+**Troubleshooting**
  - Bot Not Responding: Ensure the bot token is correct and the bot has the necessary permissions in the Discord server.
  - Console Application Issues: Check the path and executable name of the console application. Ensure it's located in the correct directory.
  - Webhook Not Sending Messages: Verify that the webhook URL is correct and that the webhook is properly configured in Discord.
+ - HideConsole Issues: Ensure hide.exe is correctly built and located in the same directory as your Node.js application.
+
+Note: This project may not be updated in the future. It was created for personal use and may not be maintained.
